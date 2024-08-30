@@ -1,44 +1,86 @@
+/* Base styles for small screens */
 #gameboard {
-    width: 320px;
-    height: 320px;
+    width: 100%;
+    max-width: 320px; /* Adjust as needed */
+    height: auto;
     display: flex;
     flex-wrap: wrap;
+    margin: 0 auto;
+    border: 1px solid #000; /* Optional: Border to visualize gameboard */
 }
 
 .square {
-    width: 40px;
-    height: 40px;
+    width: 25%; /* 4 squares per row */
+    padding-bottom: 25%; /* Maintain aspect ratio (1:1) */
+    position: relative;
+    background-color: #f0f0f0; /* Optional: background color for squares */
+}
+
+.piece {
+    position: absolute;
+    width: 80%; /* Adjust size of the piece */
+    height: 80%;
+    top: 10%; /* Center piece vertically */
+    left: 10%; /* Center piece horizontally */
     display: flex;
     align-items: center;
     justify-content: center;
-    position: relative;
+    pointer-events: none; /* Prevents interference with dragging */
 }
 
 .piece svg {
-    height: 30px;
-    width: 30px;
-    margin: 5px;
-    position: relative;
-    z-index: -9;
+    height: 100%;
+    width: 100%;
 }
-path{
-    position: relative;
-    z-index: -10;
+.piece {
+    cursor: grab; /* Show a grab cursor to indicate draggable items */
 }
-.pice{
-    position: relative;
-    z-index: 9;
+
+.piece:active {
+    cursor: grabbing; /* Show a grabbing cursor while dragging */
 }
+
 .white {
     background-color: white;
+}
+
+.black {
+    fill: black;
 }
 
 .blue {
     background-color: rgb(63, 73, 213);
 }
-.black{
-    fill: rgb(28,28,28);
-}
-.red{
+
+.red {
     fill: darkred;
+}
+
+/* Optional: Add hover effect for better UX */
+.square:hover {
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+/* Medium screens */
+@media (min-width: 768px) {
+    #gameboard {
+        max-width: 480px; /* Adjust as needed */
+    }
+
+    .square {
+        width: 20%; /* 5 squares per row */
+        padding-bottom: 20%; /* Maintain aspect ratio (1:1) */
+    }
+}
+
+/* Large screens */
+@media (min-width: 1200px) {
+    #gameboard {
+        max-width: 640px; /* Adjust as needed */
+    }
+
+    .square {
+        width: 12.5%; /* 8 squares per row */
+        padding-bottom: 12.5%; /* Maintain aspect ratio (1:1) */
+    }
 }
