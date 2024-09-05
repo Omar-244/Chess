@@ -1,86 +1,45 @@
 /* Base styles for small screens */
 #gameboard {
-    width: 100%;
-    max-width: 320px; /* Adjust as needed */
-    height: auto;
+    width: 320px;
+    height: 320px;
     display: flex;
     flex-wrap: wrap;
-    margin: 0 auto;
-    border: 1px solid #000; /* Optional: Border to visualize gameboard */
+    background-color: beige;
+    
 }
 
 .square {
-    width: 25%; /* 4 squares per row */
-    padding-bottom: 25%; /* Maintain aspect ratio (1:1) */
+    height: 40px;
+    width: 40px;
+    position: relative; 
+}
+.square svg {
+    height: 30px;
+    width: 30px;
+    margin: 5px;
     position: relative;
-    background-color: #f0f0f0; /* Optional: background color for squares */
+    z-index: -9;
+
+}
+path{
+    position: relative;
+    z-index: -10;
+}
+.piece{
+    position: relative;
+    z-index: 9;
+}
+.beige {
+    background-color:rgb (110,110,98);
 }
 
-.piece {
-    position: absolute;
-    width: 80%; /* Adjust size of the piece */
-    height: 80%;
-    top: 10%; /* Center piece vertically */
-    left: 10%; /* Center piece horizontally */
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    pointer-events: none; /* Prevents interference with dragging */
+.brown {
+    background-color: rgb(169, 43, 43);
 }
-
-.piece svg {
-    height: 100%;
-    width: 100%;
-}
-.piece {
-    cursor: grab; /* Show a grab cursor to indicate draggable items */
-}
-
-.piece:active {
-    cursor: grabbing; /* Show a grabbing cursor while dragging */
+.black {
+    fill:rgb(28,28,28);
 }
 
 .white {
-    background-color: white;
-}
-
-.black {
-    fill: black;
-}
-
-.blue {
-    background-color: rgb(63, 73, 213);
-}
-
-.red {
-    fill: darkred;
-}
-
-/* Optional: Add hover effect for better UX */
-.square:hover {
-    background-color: rgba(0, 0, 0, 0.1);
-}
-
-/* Medium screens */
-@media (min-width: 768px) {
-    #gameboard {
-        max-width: 480px; /* Adjust as needed */
-    }
-
-    .square {
-        width: 20%; /* 5 squares per row */
-        padding-bottom: 20%; /* Maintain aspect ratio (1:1) */
-    }
-}
-
-/* Large screens */
-@media (min-width: 1200px) {
-    #gameboard {
-        max-width: 640px; /* Adjust as needed */
-    }
-
-    .square {
-        width: 12.5%; /* 8 squares per row */
-        padding-bottom: 12.5%; /* Maintain aspect ratio (1:1) */
-    }
-}
+    fill:rgb(255,255,255);
+} 

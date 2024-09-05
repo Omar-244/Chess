@@ -1,0 +1,296 @@
+/* .piece {
+    position: absolute;
+    width: 80%; /* Adjust size of the piece */
+    height: 80%;
+    top: 10%; /* Center piece vertically */
+    left: 10%; /* Center piece horizontally */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    pointer-events: none; /* Prevents interference with dragging */
+}
+
+
+.piece {
+    cursor: grab; /* Show a grab cursor to indicate draggable items */
+}
+
+.piece:active {
+    cursor: grabbing; /* Show a grabbing cursor while dragging */
+} */
+
+
+
+/* Optional: Add hover effect for better UX */
+/* .square:hover {
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+/* Medium screens */
+@media (min-width: 768px) {
+    #gameboard {
+        max-width: 480px; /* Adjust as needed */
+    }
+
+    .square {
+        width: 20%; /* 5 squares per row */
+        padding-bottom: 20%; /* Maintain aspect ratio (1:1) */
+    }
+}
+
+/* Large screens */
+@media (min-width: 1200px) {
+    #gameboard {
+        max-width: 640px; /* Adjust as needed */
+    }
+
+    .square {
+        width: 12.5%; /* 8 squares per row */
+        padding-bottom: 12.5%; /* Maintain aspect ratio (1:1) */
+    }
+} 
+
+
+/*
+    
+const startId = Number(startPostitionId)
+const piece = draggedElement.id
+
+    
+
+    
+       
+
+        case 'queen':
+    if (
+        // Diagonal moves (bottom-right)
+        (startId + width + 1 === targetId &&
+            !document.querySelector(`[square-id="${startId + width + 1}"]`).firstChild) ||
+        (startId + width * 2 + 2 === targetId &&
+            !document.querySelector(`[square-id="${startId + width + 1}"]`).firstChild &&
+            !document.querySelector(`[square-id="${startId + width * 2 + 2}"]`).firstChild) ||
+        (startId + width * 3 + 3 === targetId &&
+            !document.querySelector(`[square-id="${startId + width + 1}"]`).firstChild &&
+            !document.querySelector(`[square-id="${startId + width * 2 + 2}"]`).firstChild &&
+            !document.querySelector(`[square-id="${startId + width * 3 + 3}"]`).firstChild) ||
+        (startId + width * 4 + 4 === targetId &&
+            !document.querySelector(`[square-id="${startId + width + 1}"]`).firstChild &&
+            !document.querySelector(`[square-id="${startId + width * 2 + 2}"]`).firstChild &&
+            !document.querySelector(`[square-id="${startId + width * 3 + 3}"]`).firstChild &&
+            !document.querySelector(`[square-id="${startId + width * 4 + 4}"]`).firstChild) ||
+        (startId + width * 5 + 5 === targetId &&
+            !document.querySelector(`[square-id="${startId + width + 1}"]`).firstChild &&
+            !document.querySelector(`[square-id="${startId + width * 2 + 2}"]`).firstChild &&
+            !document.querySelector(`[square-id="${startId + width * 3 + 3}"]`).firstChild &&
+            !document.querySelector(`[square-id="${startId + width * 4 + 4}"]`).firstChild &&
+            !document.querySelector(`[square-id="${startId + width * 5 + 5}"]`).firstChild) ||
+        (startId + width * 6 + 6 === targetId &&
+            !document.querySelector(`[square-id="${startId + width + 1}"]`).firstChild &&
+            !document.querySelector(`[square-id="${startId + width * 2 + 2}"]`).firstChild &&
+            !document.querySelector(`[square-id="${startId + width * 3 + 3}"]`).firstChild &&
+            !document.querySelector(`[square-id="${startId + width * 4 + 4}"]`).firstChild &&
+            !document.querySelector(`[square-id="${startId + width * 5 + 5}"]`).firstChild &&
+            !document.querySelector(`[square-id="${startId + width * 6 + 6}"]`).firstChild) ||
+        (startId + width * 7 + 7 === targetId &&
+            !document.querySelector(`[square-id="${startId + width + 1}"]`).firstChild &&
+            !document.querySelector(`[square-id="${startId + width * 2 + 2}"]`).firstChild &&
+            !document.querySelector(`[square-id="${startId + width * 3 + 3}"]`).firstChild &&
+            !document.querySelector(`[square-id="${startId + width * 4 + 4}"]`).firstChild &&
+            !document.querySelector(`[square-id="${startId + width * 5 + 5}"]`).firstChild &&
+            !document.querySelector(`[square-id="${startId + width * 6 + 6}"]`).firstChild &&
+            !document.querySelector(`[square-id="${startId + width * 7 + 7}"]`).firstChild) ||
+
+        // Diagonal moves (top-left)
+        (startId - width - 1 === targetId &&
+            !document.querySelector(`[square-id="${startId - width - 1}"]`).firstChild) ||
+        (startId - width * 2 - 2 === targetId &&
+            !document.querySelector(`[square-id="${startId - width - 1}"]`).firstChild &&
+            !document.querySelector(`[square-id="${startId - width * 2 - 2}"]`).firstChild) ||
+        (startId - width * 3 - 3 === targetId &&
+            !document.querySelector(`[square-id="${startId - width - 1}"]`).firstChild &&
+            !document.querySelector(`[square-id="${startId - width * 2 - 2}"]`).firstChild &&
+            !document.querySelector(`[square-id="${startId - width * 3 - 3}"]`).firstChild) ||
+        (startId - width * 4 - 4 === targetId &&
+            !document.querySelector(`[square-id="${startId - width - 1}"]`).firstChild &&
+            !document.querySelector(`[square-id="${startId - width * 2 - 2}"]`).firstChild &&
+            !document.querySelector(`[square-id="${startId - width * 3 - 3}"]`).firstChild &&
+            !document.querySelector(`[square-id="${startId - width * 4 - 4}"]`).firstChild) ||
+        (startId - width * 5 - 5 === targetId &&
+            !document.querySelector(`[square-id="${startId - width - 1}"]`).firstChild &&
+            !document.querySelector(`[square-id="${startId - width * 2 - 2}"]`).firstChild &&
+            !document.querySelector(`[square-id="${startId - width * 3 - 3}"]`).firstChild &&
+            !document.querySelector(`[square-id="${startId - width * 4 - 4}"]`).firstChild &&
+            !document.querySelector(`[square-id="${startId - width * 5 - 5}"]`).firstChild) ||
+        (startId - width * 6 - 6 === targetId &&
+            !document.querySelector(`[square-id="${startId - width - 1}"]`).firstChild &&
+            !document.querySelector(`[square-id="${startId - width * 2 - 2}"]`).firstChild &&
+            !document.querySelector(`[square-id="${startId - width * 3 - 3}"]`).firstChild &&
+            !document.querySelector(`[square-id="${startId - width * 4 - 4}"]`).firstChild &&
+            !document.querySelector(`[square-id="${startId - width * 5 - 5}"]`).firstChild &&
+            !document.querySelector(`[square-id="${startId - width * 6 - 6}"]`).firstChild) ||
+        (startId - width * 7 - 7 === targetId &&
+            !document.querySelector(`[square-id="${startId - width - 1}"]`).firstChild &&
+            !document.querySelector(`[square-id="${startId - width * 2 - 2}"]`).firstChild &&
+            !document.querySelector(`[square-id="${startId - width * 3 - 3}"]`).firstChild &&
+            !document.querySelector(`[square-id="${startId - width * 4 - 4}"]`).firstChild &&
+            !document.querySelector(`[square-id="${startId - width * 5 - 5}"]`).firstChild &&
+            !document.querySelector(`[square-id="${startId - width * 6 - 6}"]`).firstChild &&
+            !document.querySelector(`[square-id="${startId - width * 7 - 7}"]`).firstChild) ||
+
+        // Horizontal moves
+        (startId + 1 === targetId &&
+            !document.querySelector(`[square-id="${startId + 1}"]`).firstChild) ||
+        (startId + 2 === targetId &&
+            !document.querySelector(`[square-id="${startId + 1}"]`).firstChild &&
+            !document.querySelector(`[square-id="${startId + 2}"]`).firstChild) ||
+        (startId + 3 === targetId &&
+            !document.querySelector(`[square-id="${startId + 1}"]`).firstChild &&
+            !document.querySelector(`[square-id="${startId + 2}"]`).firstChild &&
+            !document.querySelector(`[square-id="${startId + 3}"]`).firstChild) ||
+        (startId + 4 === targetId &&
+            !document.querySelector(`[square-id="${startId + 1}"]`).firstChild &&
+            !document.querySelector(`[square-id="${startId + 2}"]`).firstChild &&
+            !document.querySelector(`[square-id="${startId + 3}"]`).firstChild &&
+            !document.querySelector(`[square-id="${startId + 4}"]`).firstChild) ||
+        (startId + 5 === targetId &&
+            !document.querySelector(`[square-id="${startId + 1}"]`).firstChild &&
+            !document.querySelector(`[square-id="${startId + 2}"]`).firstChild &&
+            !document.querySelector(`[square-id="${startId + 3}"]`).firstChild &&
+            !document.querySelector(`[square-id="${startId + 4}"]`).firstChild &&
+            !document.querySelector(`[square-id="${startId + 5}"]`).firstChild) ||
+        (startId + 6 === targetId &&
+            !document.querySelector(`[square-id="${startId + 1}"]`).firstChild &&
+            !document.querySelector(`[square-id="${startId + 2}"]`).firstChild &&
+            !document.querySelector(`[square-id="${startId + 3}"]`).firstChild &&
+            !document.querySelector(`[square-id="${startId + 4}"]`).firstChild &&
+            !document.querySelector(`[square-id="${startId + 5}"]`).firstChild &&
+            !document.querySelector(`[square-id="${startId + 6}"]`).firstChild) ||
+        (startId + 7 === targetId &&
+            !document.querySelector(`[square-id="${startId + 1}"]`).firstChild &&
+            !document.querySelector(`[square-id="${startId + 2}"]`).firstChild &&
+            !document.querySelector(`[square-id="${startId + 3}"]`).firstChild &&
+            !document.querySelector(`[square-id="${startId + 4}"]`).firstChild &&
+            !document.querySelector(`[square-id="${startId + 5}"]`).firstChild &&
+            !document.querySelector(`[square-id="${startId + 6}"]`).firstChild &&
+            !document.querySelector(`[square-id="${startId + 7}"]`).firstChild) ||
+
+        // Vertical moves
+        (startId - width === targetId &&
+            !document.querySelector(`[square-id="${startId - width}"]`).firstChild) ||
+        (startId - width * 2 === targetId &&
+            !document.querySelector(`[square-id="${startId - width}"]`).firstChild &&
+            !document.querySelector(`[square-id="${startId - width * 2}"]`).firstChild) ||
+        (startId - width * 3 === targetId &&
+            !document.querySelector(`[square-id="${startId - width}"]`).firstChild &&
+            !document.querySelector(`[square-id="${startId - width * 2}"]`).firstChild &&
+            !document.querySelector(`[square-id="${startId - width * 3}"]`).firstChild) ||
+        (startId - width * 4 === targetId &&
+            !document.querySelector(`[square-id="${startId - width}"]`).firstChild &&
+            !document.querySelector(`[square-id="${startId - width * 2}"]`).firstChild &&
+            !document.querySelector(`[square-id="${startId - width * 3}"]`).firstChild &&
+            !document.querySelector(`[square-id="${startId - width * 4}"]`).firstChild) ||
+        (startId - width * 5 === targetId &&
+            !document.querySelector(`[square-id="${startId - width}"]`).firstChild &&
+            !document.querySelector(`[square-id="${startId - width * 2}"]`).firstChild &&
+            !document.querySelector(`[square-id="${startId - width * 3}"]`).firstChild &&
+            !document.querySelector(`[square-id="${startId - width * 4}"]`).firstChild &&
+            !document.querySelector(`[square-id="${startId - width * 5}"]`).firstChild) ||
+        (startId - width * 6 === targetId &&
+            !document.querySelector(`[square-id="${startId - width}"]`).firstChild &&
+            !document.querySelector(`[square-id="${startId - width * 2}"]`).firstChild &&
+            !document.querySelector(`[square-id="${startId - width * 3}"]`).firstChild &&
+            !document.querySelector(`[square-id="${startId - width * 4}"]`).firstChild &&
+            !document.querySelector(`[square-id="${startId - width * 5}"]`).firstChild &&
+            !document.querySelector(`[square-id="${startId - width * 6}"]`).firstChild) ||
+        (startId - width * 7 === targetId &&
+            !document.querySelector(`[square-id="${startId - width}"]`).firstChild &&
+            !document.querySelector(`[square-id="${startId - width * 2}"]`).firstChild &&
+            !document.querySelector(`[square-id="${startId - width * 3}"]`).firstChild &&
+            !document.querySelector(`[square-id="${startId - width * 4}"]`).firstChild &&
+            !document.querySelector(`[square-id="${startId - width * 5}"]`).firstChild &&
+            !document.querySelector(`[square-id="${startId - width * 6}"]`).firstChild &&
+            !document.querySelector(`[square-id="${startId - width * 7}"]`).firstChild)
+    ) {
+        return true;
+    }
+    break;
+
+
+      
+
+      
+   }
+}
+
+
+
+/*function replace*/
+function dragDrop(e) {
+       e.stopPropagation(); // Prevent event bubbling
+       const correctGo = draggedElement.firstChild.classList.contains(playerGo)
+       const taken = e.target.classList.contains('piece')
+       const valid = checkIfValid(); 
+       const opponentGo = playerGo === 'white'? 'black' : 'white'
+       const takenByOpponent = e.target.firstChild?.classList.contains(opponentGo);
+       
+   
+       if (correctGo) {
+       // must check this first
+         //if (takenByOpponent && valid) {
+           e.target.parentNode.append(draggedElement)
+            e.target.remove()
+            changePlayer();
+            return;
+                }
+                // then check this
+                if (taken){
+                    infoDisplay.textContent = "You cannot go here!";
+                    setTimeout(() => infoDisplay.textContent = "", 2000);
+                    return
+                }
+                if (valid) {
+                            e.target.append(draggedElement);
+                            //checkForWin();
+                            changePlayer();
+                            return
+                        }
+                      
+       }
+
+       function checkIfValid(target){
+    const targetId = Number(target.getAttribute('square-id')) || Number(target.parentNode.getAttribute('square-id'))
+    const startId = Number(startPositionId) 
+    const piece = draggedElement.id
+    console.log('targetId', targetId)
+    console.log('startId', startId)
+    console.log('piece', piece)
+ }
+
+ DragDrop Function working but not taking opponentGo
+ function dragDrop(e) {
+    e.stopPropagation(); // Prevent event bubbling
+    const correctGo = draggedElement.firstChild.classList.contains(playerGo);
+    const taken = e.target.classList.contains('piece');
+    const valid = checkIfValid(e.target); // Pass e.target to checkIfValid
+    const opponentGo = playerGo === 'white' ? 'black' : 'white';
+    const takenByOpponent = e.target.firstChild?.classList.contains(opponentGo);
+
+    if (correctGo) {
+        if (takenByOpponent && valid) {
+            e.target.parentNode.append(draggedElement);
+            e.target.remove();
+            changePlayer();
+            return;
+        }
+        if (taken) {
+            infoDisplay.textContent = "You cannot go here!";
+            setTimeout(() => infoDisplay.textContent = "", 2000);
+            return;
+        }
+        if (valid) {
+            e.target.append(draggedElement); // Fixed target append
+            changePlayer();
+            return;
+        }
+    }
+}
